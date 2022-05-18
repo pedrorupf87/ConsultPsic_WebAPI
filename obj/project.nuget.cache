@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IbKfV/QVeO/7FhOn1jENgsDRzrh4TEq89HFPgZAQ05p1lUwlVidV6CfD8XY0QtnbBTTgQG6ikbx1gu1KdOQAbA==",
+  "dgSpecHash": "ZMuHpiIwINp2QZA9JwJG4yUxrF1SMKv73467BH9Iu9srKcacNxp2eJzMMVl6i0BXc16KfQE8cYzXJCcLseEE+w==",
   "success": true,
-  "projectFilePath": "c:\\Users\\Pedro R. P. Viana\\Documents\\SistemaConsult\\ModuloClinicaPsicologia\\ConsultPsic_WebAPI\\ConsultPsic_WebAPI.csproj",
+  "projectFilePath": "C:\\Users\\Pedro R. P. Viana\\Documents\\SistemaConsult\\ModuloClinicaPsicologia\\ConsultPsic_WebAPI\\ConsultPsic_WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Pedro R. P. Viana\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\5.0.8\\microsoft.aspnetcore.jsonpatch.5.0.8.nupkg.sha512",
     "C:\\Users\\Pedro R. P. Viana\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\5.0.8\\microsoft.aspnetcore.mvc.newtonsoftjson.5.0.8.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Pedro R. P. Viana\\Documents\\SistemaConsult\\ModuloClinicaPsicologia\\ConsultPsic_WebAPI\\ConsultPsic_WebAPI.csproj": {}
+    "C:\\Users\\Pedro R. P. Viana\\Documents\\SistemaConsult\\ModuloClinicaPsicologia\\ConsultPsic_WebAPI\\ConsultPsic_WebAPI.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Pedro R. P. Viana\\Documents\\SistemaConsult\\ModuloClinicaPsicologia\\ConsultPsic_WebAPI\\ConsultPsic_WebAPI.csproj": {
+    "C:\\Users\\Pedro R. P. Viana\\Documents\\SistemaConsult\\ModuloClinicaPsicologia\\ConsultPsic_WebAPI\\ConsultPsic_WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Pedro R. P. Viana\\Documents\\SistemaConsult\\ModuloClinicaPsicologia\\ConsultPsic_WebAPI\\ConsultPsic_WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Pedro R. P. Viana\\Documents\\SistemaConsult\\ModuloClinicaPsicologia\\ConsultPsic_WebAPI\\ConsultPsic_WebAPI.csproj",
         "projectName": "ConsultPsic_WebAPI",
-        "projectPath": "c:\\Users\\Pedro R. P. Viana\\Documents\\SistemaConsult\\ModuloClinicaPsicologia\\ConsultPsic_WebAPI\\ConsultPsic_WebAPI.csproj",
+        "projectPath": "C:\\Users\\Pedro R. P. Viana\\Documents\\SistemaConsult\\ModuloClinicaPsicologia\\ConsultPsic_WebAPI\\ConsultPsic_WebAPI.csproj",
         "packagesPath": "C:\\Users\\Pedro R. P. Viana\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Pedro R. P. Viana\\Documents\\SistemaConsult\\ModuloClinicaPsicologia\\ConsultPsic_WebAPI\\obj\\",
+        "outputPath": "C:\\Users\\Pedro R. P. Viana\\Documents\\SistemaConsult\\ModuloClinicaPsicologia\\ConsultPsic_WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Pedro R. P. Viana\\AppData\\Roaming\\NuGet\\NuGet.Config",
