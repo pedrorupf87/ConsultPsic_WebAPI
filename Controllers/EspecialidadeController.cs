@@ -14,11 +14,11 @@ namespace ConsultPsic_WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BancoController : ControllerBase
+    public class EspecialidadeController : ControllerBase
     {
         private readonly IConfiguration _config;
 
-        public BancoController(IConfiguration config)
+        public EspecialidadeController(IConfiguration config)
         {
             _config = config;
         }
@@ -27,8 +27,8 @@ namespace ConsultPsic_WebAPI.Controllers
         public JsonResult ConsultaGeral()
         {
             string conn = _config.GetConnectionString("conn");
-            string sql = @"SELECT COD_BANCO, NOM_BANCO
-                             FROM TB_BANCO";
+            string sql = @"SELECT COD_ESPECIALIDADE, TXT_ESPECIALIDADE
+                             FROM TB_ESPECIALIDADE";
             DataTable dt = new DataTable();
             SqlDataReader dr;
             using (SqlConnection conexao = new SqlConnection(conn))
@@ -47,12 +47,16 @@ namespace ConsultPsic_WebAPI.Controllers
         }
 
         [HttpPost]
-        public JsonResult InsereBanco(Banco banco)
+        public JsonResult InsereEspecialidade(Especialidade esp)
         {
             string conn = _config.GetConnectionString("conn");
-            string sql = @"INSERT INTO TB_BANCO
-                                VALUES ('" + banco.COD_BANCO + @"',
-                                        '" + banco.NOM_BANCO + @"')";
+            string sql = @"INSERT INTO TB_ESPECIALIDADE
+                                  (COD_ESPECIALIDADE
+                                  ,TXT_ESPECIALIDADE)
+                                  
+                                  SELECT MAX(COD_ESPECIALIDADE) + 1
+                                 ,'" + esp.TXT_ESPECIALIDADE + @"'
+                                  FROM TB_ESPECIALIDADE";
             DataTable dt = new DataTable();
             SqlDataReader dr;
             using (SqlConnection conexao = new SqlConnection(conn))
@@ -67,16 +71,16 @@ namespace ConsultPsic_WebAPI.Controllers
                 }
             }
 
-            return new JsonResult("Banco adicionado com sucesso!");
+            return new JsonResult("Especialidade adicionada com sucesso!");
         }
 
         [HttpPut]
-        public JsonResult AlteraBanco(Banco banco)
+        public JsonResult AlteraEspecialidade(Especialidade esp)
         {
             string conn = _config.GetConnectionString("conn");
-            string sql = @"UPDATE TB_BANCO
-                              SET NOM_BANCO = '" + banco.NOM_BANCO + @"'
-                            WHERE COD_BANCO = '" + banco.COD_BANCO + @"'";
+            string sql = @"UPDATE TB_ESPECIALIDADE
+                              SET TXT_ESPECIALIDADE = '" + esp.TXT_ESPECIALIDADE + @"'
+                            WHERE COD_ESPECIALIDADE = '" + esp.COD_ESPECIALIDADE + @"'";
             DataTable dt = new DataTable();
             SqlDataReader dr;
             using (SqlConnection conexao = new SqlConnection(conn))
@@ -91,15 +95,15 @@ namespace ConsultPsic_WebAPI.Controllers
                 }
             }
 
-            return new JsonResult("Banco alterado com sucesso!");
+            return new JsonResult("Especialidade alterada com sucesso!");
         }
 
         [HttpDelete("{id}")]
-        public JsonResult DeletaBanco(int id)
+        public JsonResult DeletaEspecialidade(int id)
         {
             string conn = _config.GetConnectionString("conn");
-            string sql = @"DELETE FROM TB_BANCO
-                                 WHERE COD_BANCO = '" + id + @"'";
+            string sql = @"DELETE FROM TB_ESPECIALIDADE
+                                 WHERE COD_ESPECIALIDADE = '" + id + @"'";
             DataTable dt = new DataTable();
             SqlDataReader dr;
             using (SqlConnection conexao = new SqlConnection(conn))
@@ -114,7 +118,7 @@ namespace ConsultPsic_WebAPI.Controllers
                 }
             }
 
-            return new JsonResult("Banco excluído com sucesso!");
+            return new JsonResult("Especialidade deletada com sucesso!");
         }
     }
 }
