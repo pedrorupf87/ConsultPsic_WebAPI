@@ -14,11 +14,11 @@ namespace ConsultPsic_WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EscolaridadeController : ControllerBase
+    public class BancoController : Controller
     {
         private readonly IConfiguration _config;
 
-        public EscolaridadeController(IConfiguration config)
+        public BancoController(IConfiguration config)
         {
             _config = config;
         }
@@ -27,8 +27,8 @@ namespace ConsultPsic_WebAPI.Controllers
         public JsonResult ConsultaGeral()
         {
             string conn = _config.GetConnectionString("conn");
-            string sql = @"SELECT COD_ESCOLARIDADE, TXT_ESCOLARIDADE
-                             FROM TB_ESCOLARIDADE";
+            string sql = @"SELECT COD_BANCO, NOM_BANCO
+                             FROM TB_BANCO";
             DataTable dt = new DataTable();
             SqlDataReader dr;
             using (SqlConnection conexao = new SqlConnection(conn))
@@ -47,15 +47,12 @@ namespace ConsultPsic_WebAPI.Controllers
         }
 
         [HttpPost]
-        public JsonResult InsereEscolaridade(Escolaridade esc)
+        public JsonResult InsereBanco(Banco banco)
         {
             string conn = _config.GetConnectionString("conn");
-            string sql = @"INSERT INTO TB_ESCOLARIDADE
-                                  (COD_ESCOLARIDADE
-                                  ,NOM_ESCOLARIDADE)
-                                  
-                                  SELECT MAX(COD_ESCOLARIDADE) + 1
-                                 ,'" + esc.TXT_ESCOLARIDADE + @"'";
+            string sql = @"INSERT INTO TB_BANCO
+                                VALUES ('" + banco.COD_BANCO + @"',
+                                        '" + banco.NOM_BANCO + @"')";
             DataTable dt = new DataTable();
             SqlDataReader dr;
             using (SqlConnection conexao = new SqlConnection(conn))
@@ -70,16 +67,16 @@ namespace ConsultPsic_WebAPI.Controllers
                 }
             }
 
-            return new JsonResult("Escolaridade adicionada com sucesso!");
+            return new JsonResult("Banco adicionado com sucesso!");
         }
 
         [HttpPut]
-        public JsonResult AlteraEscolaridade(Escolaridade esc)
+        public JsonResult AlteraBanco(Banco banco)
         {
             string conn = _config.GetConnectionString("conn");
-            string sql = @"UPDATE TB_ESCOLARIDADE
-                              SET TXT_ESCOLARIDADE = '" + esc.TXT_ESCOLARIDADE + @"'
-                            WHERE COD_ESCOLARIDADE = '" + esc.COD_ESCOLARIDADE + @"'";
+            string sql = @"UPDATE TB_BANCO
+                              SET NOM_BANCO = '" + banco.NOM_BANCO + @"'
+                            WHERE COD_BANCO = '" + banco.COD_BANCO + @"'";
             DataTable dt = new DataTable();
             SqlDataReader dr;
             using (SqlConnection conexao = new SqlConnection(conn))
@@ -94,15 +91,15 @@ namespace ConsultPsic_WebAPI.Controllers
                 }
             }
 
-            return new JsonResult("Escolaridade alterada com sucesso!");
+            return new JsonResult("Banco alterado com sucesso!");
         }
 
-        [HttpDelete]
-        public JsonResult DeletaEscolaridade(Escolaridade esc)
+        [HttpDelete("{id}")]
+        public JsonResult DeletaBanco(int id)
         {
             string conn = _config.GetConnectionString("conn");
-            string sql = @"DELETE FROM TB_ESCOLARIDADE
-                                 WHERE COD_ESCOLARIDADE = '" + esc.COD_ESCOLARIDADE + @"'";
+            string sql = @"DELETE FROM TB_BANCO
+                                 WHERE COD_BANCO = '" + id + @"'";
             DataTable dt = new DataTable();
             SqlDataReader dr;
             using (SqlConnection conexao = new SqlConnection(conn))
@@ -117,7 +114,7 @@ namespace ConsultPsic_WebAPI.Controllers
                 }
             }
 
-            return new JsonResult("Escolaridade deletada com sucesso!");
+            return new JsonResult("Banco excluído com sucesso!");
         }
     }
 }
