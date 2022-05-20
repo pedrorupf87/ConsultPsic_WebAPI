@@ -52,10 +52,11 @@ namespace ConsultPsic_WebAPI.Controllers
             string conn = _config.GetConnectionString("conn");
             string sql = @"INSERT INTO TB_ESCOLARIDADE
                                   (COD_ESCOLARIDADE
-                                  ,NOM_ESCOLARIDADE)
+                                  ,TXT_ESCOLARIDADE)
                                   
                                   SELECT MAX(COD_ESCOLARIDADE) + 1
-                                 ,'" + esc.TXT_ESCOLARIDADE + @"'";
+                                 ,'" + esc.TXT_ESCOLARIDADE + @"'
+                                  FROM TB_ESCOLARIDADE";
             DataTable dt = new DataTable();
             SqlDataReader dr;
             using (SqlConnection conexao = new SqlConnection(conn))
@@ -97,12 +98,12 @@ namespace ConsultPsic_WebAPI.Controllers
             return new JsonResult("Escolaridade alterada com sucesso!");
         }
 
-        [HttpDelete]
-        public JsonResult DeletaEscolaridade(Escolaridade esc)
+        [HttpDelete("{id}")]
+        public JsonResult DeletaEscolaridade(int id)
         {
             string conn = _config.GetConnectionString("conn");
             string sql = @"DELETE FROM TB_ESCOLARIDADE
-                                 WHERE COD_ESCOLARIDADE = '" + esc.COD_ESCOLARIDADE + @"'";
+                                 WHERE COD_ESCOLARIDADE = '" + id + @"'";
             DataTable dt = new DataTable();
             SqlDataReader dr;
             using (SqlConnection conexao = new SqlConnection(conn))
